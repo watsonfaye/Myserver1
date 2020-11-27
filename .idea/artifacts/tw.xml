@@ -14,7 +14,6 @@
           <element id="library" level="project" name="fastjson-1.2.13" />
         </element>
       </element>
-      <element id="javaee-facet-resources" facet="WebModule/web/Web" />
     </root>
   </artifact>
 </component>
