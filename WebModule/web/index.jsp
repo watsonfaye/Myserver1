@@ -11,9 +11,6 @@
     <title>Title</title>
 </head>
 <body>
-        <%
 
-                int i=5/0;
-        %>
 </body>
 </html>
