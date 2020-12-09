@@ -31,7 +31,7 @@ public abstract class BaseDao {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }finally {
-            DBUtil.closeAll(null,pstmt,null);
+           // DBUtil.closeAll(null,pstmt,null);
         }
 
         return  r;

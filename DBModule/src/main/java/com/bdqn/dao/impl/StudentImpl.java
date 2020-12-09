@@ -40,7 +40,7 @@ public class StudentImpl extends BaseDao implements StudentDao {
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            DBUtil.closeAll(null,null,rs);
+           // DBUtil.closeAll(null,null,rs);
         }
         return list;
     }
@@ -66,7 +66,7 @@ public class StudentImpl extends BaseDao implements StudentDao {
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            DBUtil.closeAll(null,null,rs);
+           // DBUtil.closeAll(null,null,rs);
         }
         return list;
     }

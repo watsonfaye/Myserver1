@@ -1,33 +1,43 @@
 package com.bdqn.util;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import java.sql.*;
+import java.util.Properties;
 
 //数据库工具类
 public class DBUtil {
-    private static  String DRIVER= ConfigManager.getProperty("driver");
-    private static  String URL= ConfigManager.getProperty("url");
-    private static  String UNAME= ConfigManager.getProperty("uname");
-    private static  String PWD= ConfigManager.getProperty("pwd");
+   private Properties properties;
+
+    public Properties getProperties() {
+        return properties;
+    }
+
+    public void setProperties(Properties properties) {
+        this.properties = properties;
+    }
+
     //注册驱动
-    static {
+    public void init(){
         try {
-            Class.forName(DRIVER);
+            Class.forName(properties.getProperty("driver"));
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
     }
+
     //获得连接
-    public  static Connection getConn(){
+    public  Connection getConn(){
         Connection conn=null;
         try {
-            conn= DriverManager.getConnection(URL,UNAME,PWD);
+            conn= DriverManager.getConnection(properties.getProperty("url"),properties.getProperty("username"),properties.getProperty("password"));
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
         return  conn;
     }
     //关闭连接
-    public  static  void closeAll(Connection conn, PreparedStatement pstmt, ResultSet rs){
+    public  void closeAll(Connection conn, PreparedStatement pstmt, ResultSet rs){
         try {
             if(rs!=null && !rs.isClosed()){
                 rs.close();
