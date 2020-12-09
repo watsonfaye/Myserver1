@@ -1,5 +1,4 @@
 import com.bdqn.util.DBUtil;
-import com.bdqn.util.DataUtil;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
