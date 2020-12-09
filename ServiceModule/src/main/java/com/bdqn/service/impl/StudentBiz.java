@@ -1,60 +1,29 @@
 package com.bdqn.service.impl;
 
+import com.bdqn.dao.StudentDao;
 import com.bdqn.dao.impl.StudentImpl;
 import com.bdqn.entity.City;
 import com.bdqn.entity.Student;
 import com.bdqn.service.StudentService;
 import com.bdqn.util.DBUtil;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.sql.Connection;
 import java.util.List;
-
+@Service
 public class StudentBiz implements StudentService {
+    @Autowired
+    private StudentDao studentDao;
     public List<Student> getAll() {
-        List<Student> list=null;
-        Connection conn=null;
-        try {
-            conn= DBUtil.getConn();
-            if (conn != null) {
-                list=new StudentImpl(conn).getAll();
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            DBUtil.closeAll(conn,null,null);
-        }
-        return list;
+        return studentDao.getAll();
     }
 
     public List<City> getCity() {
-        List<City> list=null;
-        Connection conn=null;
-        try {
-            conn= DBUtil.getConn();
-            if (conn != null) {
-                list=new StudentImpl(conn).getCity();
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            DBUtil.closeAll(conn,null,null);
-        }
-        return list;
+        return studentDao.getCity();
     }
 
     public int login(String uname, String pwd) {
-        int r=0;
-        Connection conn=null;
-        try {
-            conn= DBUtil.getConn();
-            if (conn != null) {
-                r=new StudentImpl(conn).login(uname,pwd);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            DBUtil.closeAll(conn,null,null);
-        }
-        return r;
+        return studentDao.login(uname,pwd);
     }
 }
